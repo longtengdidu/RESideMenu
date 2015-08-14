@@ -10,20 +10,25 @@
 #import "DEMOLeftMenuViewController.h"
 #import "DEMORightMenuViewController.h"
 #import "DEMOFirstViewController.h"
+#import <bongSDK/bongSDK.h>
 
 @implementation DEMOAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //bongSDK初始化
+    [bongSDK setAppID:@"1431943556141" appSecret:@"aec105bbb1fb4ba1bcd5876196c69370" appKey:@"728c7d4f42e7051b19934a320abb7ffdf93d4047"];
+    [bongSDK enableDevelepMode:YES];
+    [bongSDK enableDebugMode:YES];
+    //[bongSDK addDelegate:self];
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[DEMOFirstViewController alloc] init]];
     DEMOLeftMenuViewController *leftMenuViewController = [[DEMOLeftMenuViewController alloc] init];
     DEMORightMenuViewController *rightMenuViewController = [[DEMORightMenuViewController alloc] init];
     
-    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController
-                                                                    leftMenuViewController:leftMenuViewController
-                                                                   rightMenuViewController:rightMenuViewController];
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController leftMenuViewController:leftMenuViewController rightMenuViewController:rightMenuViewController];
     sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
     sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
     sideMenuViewController.delegate = self;
@@ -60,6 +65,10 @@
 - (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
 {
     NSLog(@"didHideMenuViewController: %@", NSStringFromClass([menuViewController class]));
+}
+
+- (void)bongSDKDidRun:(bongSDKErrorCode)code{
+    
 }
 
 @end

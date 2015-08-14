@@ -50,9 +50,10 @@
             [self.sideMenuViewController hideMenuViewController];
             break;
         case 1:
-            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[DEMOSecondViewController alloc] init]]
+            /*[self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[DEMOSecondViewController alloc] init]]
                                                          animated:YES];
-            [self.sideMenuViewController hideMenuViewController];
+            [self.sideMenuViewController hideMenuViewController];*/
+            [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[DEMOSecondViewController alloc] init]] animated:YES completion:nil];
             break;
         default:
             break;
