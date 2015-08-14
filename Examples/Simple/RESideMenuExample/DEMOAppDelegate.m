@@ -12,6 +12,10 @@
 #import "DEMOFirstViewController.h"
 #import <bongSDK/bongSDK.h>
 
+@interface DEMOAppDelegate() <bongSDKDelegate>
+
+@end
+
 @implementation DEMOAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,10 +23,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //bongSDK初始化
-    [bongSDK setAppID:@"1431943556141" appSecret:@"aec105bbb1fb4ba1bcd5876196c69370" appKey:@"728c7d4f42e7051b19934a320abb7ffdf93d4047"];
+    [bongSDK setAppID:@"1419735044202"
+            appSecret:@"558860f5ba4546ddb31eafeee11dc8f4"
+               appKey:@"7ae31974a95fec07ad3d047c075b11745d8ce989"];
     [bongSDK enableDevelepMode:YES];
     [bongSDK enableDebugMode:YES];
-    //[bongSDK addDelegate:self];
+    [bongSDK addDelegate:self];
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[DEMOFirstViewController alloc] init]];
     DEMOLeftMenuViewController *leftMenuViewController = [[DEMOLeftMenuViewController alloc] init];
